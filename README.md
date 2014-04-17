@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/newmediadenver/drud.svg?branch=master)](https://travis-ci.org/newmediadenver/drud) [![Coverage Status](https://coveralls.io/repos/newmediadenver/drud/badge.png?branch=master)](https://coveralls.io/r/newmediadenver/drud?branch=master) [![Dependency Status](https://gemnasium.com/newmediadenver/drud.svg)](https://gemnasium.com/newmediadenver/drud)
+
 # Drud
 
 Drud is a DevOps tool created by NewMedia Denver.
