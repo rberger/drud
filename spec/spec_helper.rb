@@ -1,9 +1,9 @@
 # encoding: utf-8
 require 'bundler/setup'
-Bundler.setup
-
+require 'coveralls'
 require 'drud'
-
+Coveralls.wear!
+Bundler.setup
 RSpec.configure do |config|
   # Use color output for RSpec
   config.color_enabled = true
