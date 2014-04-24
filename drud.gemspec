@@ -13,20 +13,13 @@ Gem::Specification.new do |spec|
   spec.homepage = 'http://newmediadenver.com/'
   spec.license = 'MIT'
 
-  spec.files = [
-    'README.md',
-    'Rakefile',
-    'Gemfile',
-    'lib/drud.rb',
-    'lib/drud/cli.rb'
-  ]
-
-  spec.executables   = spec.files.grep(/^bin\//) { |f| File.basename(f) }
-  spec.test_files    = [
-    'spec/spec_helper.rb',
-    'spec/version_spec.rb'
-  ]
+  spec.files         = `git ls-files`.split("\n")
+  spec.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
+  spec.executables   = `git ls-files -- bin/*`.split("\n")
+    .map { |f| File.basename(f) }
   spec.require_paths = ['lib']
+
+  spec.add_runtime_dependency 'thor'
 
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake'
