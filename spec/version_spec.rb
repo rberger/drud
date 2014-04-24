@@ -17,7 +17,11 @@ describe Drud::CLI do
     before do
       @content = capture(:stdout) { Drud::CLI.start(['version']) }
     end
-    it 'Returns the same version as Drud from the command line.' do
+    it 'Executing `drud version` returns the correct version.' do
+      expect(@content).to match(/^#{Drud::VERSION}/)
+    end
+    @content = capture(:stdout) { Drud::CLI.start(['-v']) }
+    it 'Executing `drud -v` returns the correct version.' do
       expect(@content).to match(/^#{Drud::VERSION}/)
     end
   end

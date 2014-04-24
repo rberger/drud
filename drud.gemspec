@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name = 'drud'
-  spec.version = Drud::VERSION
+  spec.version = '0.0.1'
   spec.authors = ['Kevin Bridges']
   spec.email = ['kevin@cyberswat.com']
   spec.summary = 'A DevOps command line tool.'
