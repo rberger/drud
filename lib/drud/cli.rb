@@ -11,7 +11,7 @@ module Drud
     desc 'version', 'The current version of this software.'
     # Sends the current {Drud::VERSION drud version} to stdout.
     def version
-      say(Drud::VERSION)
+      say(Drud::VERSION, :green)
     end
   end
 end
