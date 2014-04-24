@@ -1,5 +1,5 @@
 # encoding: utf-8
-require "codeclimate-test-reporter"
+require 'codeclimate-test-reporter'
 CodeClimate::TestReporter.start
 require 'bundler/setup'
 require 'coveralls'
