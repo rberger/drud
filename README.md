@@ -24,16 +24,16 @@ Fork it.
 
     http://github.com/<my-github-username>/drud/fork
 
-Create your feature branch
+Create your feature branch.
 
     $ git checkout -b my-new-feature
 
-Commit your changes
+Commit your changes.
 
     $ git commit -am 'Add some feature'
 
-Push to the branch
+Push to the branch.
 
     $ git push origin my-new-feature
 
-{https://help.github.com/articles/using-pull-requests Create new Pull Request}
+Create a new Pull Request https://help.github.com/articles/using-pull-requests

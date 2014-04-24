@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.email = ['kevin@cyberswat.com']
   spec.summary = 'A DevOps command line tool.'
   spec.description = 'Drud is a command line tool developed for use by '
-  spec.description  << 'NewMedia! Denver.'
-  spec.homepage = 'http://newmediadenver.com/'
+  spec.description  << 'NewMedia! Denver. It does not do much ... yet.'
+  spec.homepage = 'https://github.com/newmediadenver/drud'
   spec.license = 'MIT'
 
   spec.files         = `git ls-files`.split("\n")
