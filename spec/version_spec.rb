@@ -20,9 +20,5 @@ describe Drud::CLI do
     it 'Executing `drud version` returns the correct version.' do
       expect(@content).to match(/^#{Drud::VERSION}/)
     end
-    @content = capture(:stdout) { Drud::CLI.start(['-v']) }
-    it 'Executing `drud -v` returns the correct version.' do
-      expect(@content).to match(/^#{Drud::VERSION}/)
-    end
   end
 end
