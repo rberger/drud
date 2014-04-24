@@ -19,14 +19,16 @@ Gem::Specification.new do |spec|
     .map { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_runtime_dependency 'thor', '~> 0.19.1'
+  spec.add_runtime_dependency 'thor', '~> 0.19', '>= 0.19.1'
 
-  spec.add_development_dependency 'bundler', '~> 1.5.3'
-  spec.add_development_dependency 'rake', '~> 10.3.1'
-  spec.add_development_dependency 'rspec', '~> 2.14.1'
-  spec.add_development_dependency 'rubocop', '~> 0.21.0'
-  spec.add_development_dependency 'simplecov', '~> 0.8.2'
+  spec.add_development_dependency 'bundler', '~> 1.5', '>= 1.5.3'
+  spec.add_development_dependency 'rake', '~> 10.3', '>= 10.3.1'
+  spec.add_development_dependency 'rspec', '~> 2.14', '>= 2.14.1'
+  spec.add_development_dependency 'rubocop', '~> 0.21', '>= 0.21.0'
+  spec.add_development_dependency 'simplecov', '~> 0.8', '>= 0.8.2'
   spec.add_development_dependency 'coveralls', '~> 0.7', '>= 0.7.0'
   spec.add_development_dependency 'travis', '~> 1.6', '>= 1.6.10'
-  spec.add_development_dependency 'codeclimate-test-reporter', '~> 0.3', '>= 0.3.0'
+  spec.add_development_dependency 'codeclimate-test-reporter',
+                                  '~> 0.3',
+                                  '>= 0.3.0'
 end
