@@ -16,11 +16,11 @@ RSpec.configure do |config|
   def capture(stream)
     begin
       stream = stream.to_s
-      eval "$#{stream} = StringIO.new"
+      eval "$#{stream} = StringIO.new" # rubocop:disable Eval
       yield
-      result = eval("$#{stream}").string
+      result = eval("$#{stream}").string # rubocop:disable Eval
     ensure
-      eval("$#{stream} = #{stream.upcase}")
+      eval("$#{stream} = #{stream.upcase}") # rubocop:disable Eval
     end
 
     result
