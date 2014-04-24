@@ -1,10 +1,19 @@
 # encoding: utf-8
-require 'codeclimate-test-reporter'
-CodeClimate::TestReporter.start
-require 'bundler/setup'
+require 'simplecov'
 require 'coveralls'
+
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+  SimpleCov::Formatter::HTMLFormatter,
+  Coveralls::SimpleCov::Formatter
+]
+
+SimpleCov.start do
+  add_filter '/spec/'
+  minimum_coverage(80.00)
+end
+
+require 'bundler/setup'
 require 'drud'
-Coveralls.wear!
 Bundler.setup
 $0 = 'drud'
 ARGV.clear

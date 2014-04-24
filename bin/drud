@@ -4,6 +4,6 @@ Signal.trap('INT') { exit 1 }
 
 require 'drud/cli'
 
-Drud.rescue do
+Drud::CLI.rescue do
   Drud::CLI.start(ARGV, debug: true)
 end
