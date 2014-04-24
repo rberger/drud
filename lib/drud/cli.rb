@@ -13,5 +13,13 @@ module Drud
     def version
       say(Drud::VERSION, :green)
     end
+    # Provides error trapping for the command line client.
+    def self.rescue
+      shell = Thor::Base.shell.new
+      yield
+      rescue Thor::Error => e
+        shell.say(e.message, :red)
+        exit 1
+    end
   end
 end
