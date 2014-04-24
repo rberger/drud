@@ -8,3 +8,7 @@ script: bundle exec rake test
 branches:
   only:
   - master
+notifications:
+  hipchat:
+    rooms:
+      secure: chCwvs4r/T0iZKrHtvr6eYsM4QNPWUo90lxg6U/pWvbPGr3dWTUsAfCCrUAErY6kdh+bsm+l4dyZa0FdWnBrgSGAmUlD1myXot0thIyDtrFbHNb6wX4jv+UWi70P55zqPY/wrvrtgV0GZTPIJvbnC2XUjOaCreLFePCQmFI0pbI=
