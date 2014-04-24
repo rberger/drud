@@ -20,8 +20,20 @@ Or install it yourself as:
 
 ## Contributing
 
-1. Fork it ( http://github.com/<my-github-username>/drud/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+Fork it.
+
+    http://github.com/<my-github-username>/drud/fork
+
+Create your feature branch
+
+    $ git checkout -b my-new-feature
+
+Commit your changes
+
+    $ git commit -am 'Add some feature'
+
+Push to the branch
+
+    $ git push origin my-new-feature
+
+{https://help.github.com/articles/using-pull-requests Create new Pull Request}
