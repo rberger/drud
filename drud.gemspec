@@ -28,5 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'simplecov', '~> 0.8', '>= 0.8.2'
   spec.add_development_dependency 'coveralls', '~> 0.7', '>= 0.7.0'
   spec.add_development_dependency 'travis', '~> 1.6', '>= 1.6.10'
-  spec.add_development_dependency 'codeclimate-test-reporter', '~> 0.3', '>= 0.3.0'
+  spec.add_development_dependency 'codeclimate-test-reporter',
+                                  '~> 0.3',
+                                  '>= 0.3.0'
 end
