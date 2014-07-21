@@ -16,4 +16,3 @@ desc 'Run RuboCop style and lint checks'
 RuboCop::RakeTask.new(:rubocop)
 
 task :default => :rubocop
-
