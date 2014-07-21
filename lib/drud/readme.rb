@@ -53,7 +53,7 @@ module Drud
     #
     # ==== Attributes
     #
-    # * +:path+ - The path to the cookbook that contains a metadata.rb file and git history to be parsed.
+    # * +:path+ - The local path of the cookbook.
     #
     # ==== Examples
     # This can be placed in a convenient location, such as a Rake task inside

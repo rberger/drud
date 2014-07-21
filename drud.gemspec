@@ -8,14 +8,23 @@ Gem::Specification.new do |spec|
   spec.version       = Drud::VERSION
   spec.authors       = ['Kevin Bridges']
   spec.email         = ['kevin@cyberswat.com']
-  spec.summary       = 'Generates readmes for Newmedia Denver\'s Chef cookbooks.'
-  spec.description   = 'This may be a bit domain specific. We use it to generate readmes for cookbooks.'
+  spec.summary       = 'Generates the README.md file for Chef cookbooks.'
+  desc = 'Evaluates an opscode chef cookbook\'s metadata and github history to'
+  desc << ' generate a README.md file. The README.rb is placed in the root '
+  desc << 'level of the cookbook. This forces cookbook developers to properly '
+  desc << 'use metadata to document their cookbooks efficiently.  Additionally'
+  desc << ', it provides proper attribution for all committers in the project '
+  desc << 'with links back to the contributors github profile. It is written '
+  desc << 'to take advantage of cookbooks that properly utilize both Rake '
+  desc << 'tasks and metadata.'
+
+  spec.description   = desc
   spec.homepage      = 'https://newmediadenver.com/'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")
-  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
-  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
+  spec.executables   = spec.files.grep(/^bin\//) { |f| File.basename(f) }
+  spec.test_files    = spec.files.grep(/^(test|spec|features)\//)
   spec.require_paths = ['lib']
 
   spec.add_runtime_dependency 'chef', '~>11.12.8'
