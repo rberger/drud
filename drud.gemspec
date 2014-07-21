@@ -8,6 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Drud::VERSION
   spec.authors       = ['Kevin Bridges']
   spec.email         = ['kevin@cyberswat.com']
+  spec.required_ruby_version = '>= 1.9.3'
   spec.summary       = 'Generates the README.md file for Chef cookbooks.'
   desc = 'Evaluates an opscode chef cookbook\'s metadata and github history to'
   desc << ' generate a README.md file. The README.rb is placed in the root '
@@ -19,7 +20,7 @@ Gem::Specification.new do |spec|
   desc << 'tasks and metadata.'
 
   spec.description   = desc
-  spec.homepage      = 'https://newmediadenver.com/'
+  spec.homepage      = 'https://github.com/newmediadenver/drud'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")
