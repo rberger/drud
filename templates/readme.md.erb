@@ -1,0 +1,73 @@
+<%= metadata.maintainer %>'s <%= metadata.name %> cookbook
+=============================
+
+<%= metadata.name %> (<%= metadata.version %>) <%= metadata.description %>
+
+<%= metadata.long_description %>
+
+Requirements
+------------
+
+### Platforms
+<% metadata.platforms.each do |os, version| %>
+`<%= os %> <%= version %>`
+<% end %>
+### Dependencies
+<% metadata.dependencies.each do |os, version| %>
+`<%= os %> <%= version %>`
+<% end %>
+
+Attributes
+----------
+<% metadata.attributes.each do |name, values| %>
+    <%= name %>
+      calculated: <%= values['calculated'] %>
+      choice: <%= values['choice'].inspect %>
+      default: <%= values['default'] %>
+      description: <%= values['description'] %>
+      display_name: <%= values['display_name'] %>
+      type: <%= values['type'] %>
+      recipes: <%= values['recipes'].inspect %>
+      required: <%= values['required'] %>
+<% end %>
+
+Recipes
+-------
+<% metadata.recipes.each do |name, desc| %>
+    <%= name %>
+      <%= desc %>
+<% end %>
+Testing and Utility
+-------<% tasks.each do |task, detail| %>
+    <%= task.inspect %><%= "\n      #{detail['full_comment']}" unless detail['full_comment'].nil?  %>
+<% end %>
+License and Authors
+------------------
+
+The following engineers have contributed to this code:
+<% credit.each do |html_url, data| %> * [<%= data[:names].to_a.join(', ') %>](<%= html_url %>) - <%= data[:count] %> commits
+<% end %>
+Copyright:: 2014, NewMedia Denver
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+Contributing
+------------
+
+We welcome contributed improvements and bug fixes via the usual workflow:
+
+1. Fork this repository
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create a new pull request

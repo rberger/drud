@@ -1,34 +1,32 @@
 # encoding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'drud/version'
 
 Gem::Specification.new do |spec|
-  spec.name = 'drud'
-  spec.version = '0.0.1'
-  spec.authors = ['Kevin Bridges']
-  spec.email = ['kevin@cyberswat.com']
-  spec.summary = 'A DevOps command line tool.'
-  spec.description = 'Drud is a command line tool developed for use by '
-  spec.description  << 'NewMedia! Denver. It does not do much ... yet.'
-  spec.homepage = 'https://github.com/newmediadenver/drud'
-  spec.license = 'MIT'
+  spec.name          = 'drud'
+  spec.version       = Drud::VERSION
+  spec.authors       = ['Kevin Bridges']
+  spec.email         = ['kevin@cyberswat.com']
+  spec.summary       = 'Generates readmes for Newmedia Denver\'s Chef cookbooks.'
+  spec.description   = 'This may be a bit domain specific. We use it to generate readmes for cookbooks.'
+  spec.homepage      = 'https://newmediadenver.com/'
+  spec.license       = 'MIT'
 
-  spec.files         = `git ls-files`.split("\n")
-  spec.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  spec.executables   = `git ls-files -- bin/*`.split("\n")
-    .map { |f| File.basename(f) }
+  spec.files         = `git ls-files -z`.split("\x0")
+  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
-  spec.add_runtime_dependency 'thor', '~> 0.19', '>= 0.19.1'
-
-  spec.add_development_dependency 'bundler', '~> 1.5', '>= 1.5.3'
-  spec.add_development_dependency 'rake', '~> 10.3', '>= 10.3.1'
-  spec.add_development_dependency 'rspec', '~> 2.14', '>= 2.14.1'
-  spec.add_development_dependency 'rubocop', '~> 0.21', '>= 0.21.0'
-  spec.add_development_dependency 'simplecov', '~> 0.8', '>= 0.8.2'
-  spec.add_development_dependency 'coveralls', '~> 0.7', '>= 0.7.0'
-  spec.add_development_dependency 'travis', '~> 1.6', '>= 1.6.10'
-  spec.add_development_dependency 'codeclimate-test-reporter',
-                                  '~> 0.3',
-                                  '>= 0.3.0'
+  spec.add_runtime_dependency 'chef', '~>11.12.8'
+  spec.add_runtime_dependency 'octokit', '~>3.0'
+  spec.add_runtime_dependency 'rake', '~>10.3.2'
+  spec.add_runtime_dependency 'foodcritic', '~>4.0'
+  spec.add_runtime_dependency 'rubocop', '~>0.24.1'
+  spec.add_runtime_dependency 'test-kitchen', '~>1.2.1'
+  spec.add_runtime_dependency 'kitchen-vagrant', '~>0.15.0'
+  spec.add_runtime_dependency 'vagrant-wrapper', '~>1.2.1.1'
+  spec.add_runtime_dependency 'berkshelf', '~>3.1.4'
+  spec.add_runtime_dependency 'rspec', '~> 3.0.0'
+  spec.add_runtime_dependency 'bundler', '~> 1.6.4'
 end

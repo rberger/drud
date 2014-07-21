@@ -1,14 +1,14 @@
 # encoding: utf-8
 require 'rspec/core/rake_task'
+require 'bundler/gem_tasks'
 require 'rubocop/rake_task'
 
-$LOAD_PATH.unshift File.expand_path('../lib', __FILE__)
-
-task default: :test
-task test: [:rubocop, :spec]
-
-desc 'Run RSpec tests'
-RSpec::Core::RakeTask.new(:spec)
+RSpec::Core::RakeTask.new(:spec) do |task|
+  task.rspec_opts = ['--color', '--format', 'nested']
+end
 
 desc 'Run RuboCop style and lint checks'
-Rubocop::RakeTask.new(:rubocop)
+RuboCop::RakeTask.new(:rubocop)
+
+task :default => :rubocop
+
