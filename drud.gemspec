@@ -29,4 +29,5 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'berkshelf', '~>3.1.4'
   spec.add_runtime_dependency 'rspec', '~> 3.0.0'
   spec.add_runtime_dependency 'bundler', '~> 1.6.4'
+  spec.add_runtime_dependency 'simplecov', '~> 0.9.0'
 end

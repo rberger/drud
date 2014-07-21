@@ -1,3 +1,6 @@
+# The Drud module contains general functionality written to help our developers
+# be more efficient.
 module Drud
-  VERSION = "0.0.2"
+  # The drud version number.
+  VERSION = '0.0.2'
 end
