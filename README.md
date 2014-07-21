@@ -1,14 +1,8 @@
-<<<<<<< HEAD
-[![Build Status](https://travis-ci.org/newmediadenver/drud.svg?branch=master)](https://travis-ci.org/newmediadenver/drud) [![Coverage Status](https://coveralls.io/repos/newmediadenver/drud/badge.png?branch=master)](https://coveralls.io/r/newmediadenver/drud?branch=master) [![Dependency Status](https://gemnasium.com/newmediadenver/drud.svg)](https://gemnasium.com/newmediadenver/drud) [![Code Climate](https://codeclimate.com/github/newmediadenver/drud.png)](https://codeclimate.com/github/newmediadenver/drud) [![Gem Version](https://badge.fury.io/rb/drud.svg)](http://badge.fury.io/rb/drud)
-
 # Drud
 
-Drud is a DevOps tool created by NewMedia Denver.
-=======
-# Drud
+Evaluates an opscode chef cookbook's [metadata](https://github.com/cyberswat){http://docs.opscode.com/essentials_cookbook_metadata.html} and [github](https://github.com/) history to generate a README.md file. The README.md is placed in the root level of the cookbook. This forces cookbook developers to properly use metadata to document their cookbooks efficiently.  Additionally, it provides proper attribution for all committers in the project with links back to the contributors github profile. It is written to take advantage of cookbooks that properly utilize both Rake tasks and metadata.
 
-TODO: Write a gem description
->>>>>>> Adding readme generation.
+You can see this in use in our cookbooks. Our reference cookbook is https://github.com/newmediadenver/nmd-skeletor
 
 ## Installation
 
@@ -24,30 +18,15 @@ Or install it yourself as:
 
     $ gem install drud
 
-<<<<<<< HEAD
-## Contributing
-
-Fork it.
-
-    http://github.com/<my-github-username>/drud/fork
-
-Create your feature branch.
-
-    $ git checkout -b my-new-feature
-
-Commit your changes.
-
-    $ git commit -am 'Add some feature'
-
-Push to the branch.
-
-    $ git push origin my-new-feature
-
-Create a new Pull Request https://help.github.com/articles/using-pull-requests
-=======
 ## Usage
 
-TODO: Write usage instructions here
+Here's an example rake task that could be placed in your cookbooks Rake file.
+
+    desc 'Generate the Readme.md file.'
+    task :readme do
+      drud = Drud::Readme.new(File.dirname(__FILE__))
+      drud.render
+    end
 
 ## Contributing
 
@@ -56,4 +35,4 @@ TODO: Write usage instructions here
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
->>>>>>> Adding readme generation.
+

@@ -6,7 +6,7 @@ require 'rdoc/task'
 
 RDoc::Task.new do |rdoc|
   rdoc.main = 'README.rdoc'
-  rdoc.rdoc_files.include('README.rdoc', 'lib/*.rb', 'lib/drud/*.rb')
+  rdoc.rdoc_files.include('lib/*.rb', 'lib/drud/*.rb')
 end
 
 desc 'Run rspec tests'
