@@ -15,4 +15,4 @@ RSpec::Core::RakeTask.new(:spec)
 desc 'Run RuboCop style and lint checks'
 RuboCop::RakeTask.new(:rubocop)
 
-task :default => :rubocop
+task default: :rubocop
