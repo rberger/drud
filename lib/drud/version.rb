@@ -2,5 +2,5 @@
 # be more efficient.
 module Drud
   # The drud version number.
-  VERSION = '0.0.3'
+  VERSION = '0.0.4'
 end
