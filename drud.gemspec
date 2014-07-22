@@ -28,16 +28,10 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(/^(test|spec|features)\//)
   spec.require_paths = ['lib']
 
-  spec.add_runtime_dependency 'chef', '~>11.12.8'
-  spec.add_runtime_dependency 'octokit', '~>3.0'
-  spec.add_runtime_dependency 'rake', '~>10.3.2'
-  spec.add_runtime_dependency 'foodcritic', '~>4.0'
-  spec.add_runtime_dependency 'rubocop', '~>0.24.1'
-  spec.add_runtime_dependency 'test-kitchen', '~>1.2.1'
-  spec.add_runtime_dependency 'kitchen-vagrant', '~>0.15.0'
-  spec.add_runtime_dependency 'vagrant-wrapper', '~>1.2.1.1'
-  spec.add_runtime_dependency 'berkshelf', '~>3.1.4'
-  spec.add_runtime_dependency 'rspec', '~> 3.0.0'
-  spec.add_runtime_dependency 'bundler', '~> 1.6.4'
-  spec.add_runtime_dependency 'simplecov', '~> 0.9.0'
+  spec.add_runtime_dependency 'chef', '~> 11.12.8'
+  spec.add_runtime_dependency 'octokit', '~> 3.0'
+  spec.add_runtime_dependency 'rake', '~> 10.3.2'
+
+  spec.add_development_dependency 'rspec', '~> 3.0.0'
+  spec.add_development_dependency 'rubocop', '~> 0.24.1'
 end
