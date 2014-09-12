@@ -151,13 +151,21 @@ module Drud
     # once per author in a cookbooks project. This only returns the html_url to
     # the authors github profile.
     #
+    # If the environment variable DRUD_OAUTH is set, it will be used as an OAUTH
+    # token for accessing GITHUB
+    #
     # ==== Attributes
     #
     # * +:commit+ - The commit hash to get information from.
     def github_html_url(commit) # :doc:
       info = `cd #{@cookbook} && git remote -v`
       origin = /^origin.+?:([^\.+]*)/.match(info)[1]
-      client = Octokit::Client.new @octokit_auth
+      if @octokit_auth
+        client = Octokit::Client.new @octokit_auth
+      else
+        client = Octokit::Client.new
+      end
+      
       detail = client.commit(origin, commit)
       detail[:author][:html_url]
     end
