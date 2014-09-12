@@ -166,7 +166,16 @@ module Drud
         client = Octokit::Client.new
       end
       
-      detail = client.commit(origin, commit)
+      begin
+        detail = client.commit(origin, commit)
+      rescue Octokit::NotFound
+        puts "ERROR: Accessing Github origin: #{origin} commit: #{commit} @octokit_auth: #{@octokit_auth.inspect}"
+        unless @octokit_auth
+          puts "\tNeed to set environment variable DRUD_OAUTH to a valid Github access token for private repos"
+          puts "\tSee https://help.github.com/articles/creating-an-access-token-for-command-line-use"
+        end
+        exit(-1)
+      end
       detail[:author][:html_url]
     end
 
