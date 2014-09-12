@@ -28,6 +28,26 @@ Here's an example rake task that could be placed in your cookbooks Rake file.
       drud.render
     end
 
+### Support for Private Github Repos
+
+If you set the environment variable `DRUD_OAUTH` to a
+[Github Applicaiton access tokent](https://help.github.com/articles/creating-an-access-token-for-command-line-use)
+that token will be used to authenticate the Octokit client and allow access to private repos.
+
+You need to give the Oauth keys "repo" scope which unfortunately only comes as read/write for almost everything in all the repos owned by you.
+
+Right now the only way to give read-only access to specific repos is to create a [Machine User](https://developer.github.com/guides/managing-deploy-keys/#machine-users) assign that user to a "Read-Only" Team for the private repos you want to give  access to Drud for.
+
+### Path search for Template File
+
+By default Drud uses a template that comes embeded in the Drud Gem (`<Path to Drud Gem>/templates/readme.md.erb`). It will also check for a template file at:
+
+* `<current cookbook path>/templates/default/README.md.erb`
+* `~/.chef/README.md.erb`
+* `<Path to Drud Gem>/templates/readme.md.erb`
+
+It checks in the order shown and the first one it finds, it will use. 
+
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/drud/fork )
