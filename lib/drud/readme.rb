@@ -67,6 +67,7 @@ module Drud
       @metadata = load_metadata
       @logs = load_logs
       @commits, @credit, @tasks = {}, {}, {}
+      @octokit_auth = { access_token: ENV['DRUD_OAUTH'] } if ENV['DRUD_OAUTH']
       parse_rake_tasks
       parse_commits
       parse_credit
@@ -156,7 +157,7 @@ module Drud
     def github_html_url(commit) # :doc:
       info = `cd #{@cookbook} && git remote -v`
       origin = /^origin.+?:([^\.+]*)/.match(info)[1]
-      client = Octokit::Client.new
+      client = Octokit::Client.new @octokit_auth
       detail = client.commit(origin, commit)
       detail[:author][:html_url]
     end
