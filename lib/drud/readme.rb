@@ -67,6 +67,7 @@ module Drud
       @metadata = load_metadata
       @logs = load_logs
       @commits, @credit, @tasks = {}, {}, {}
+      @octokit_auth = { access_token: ENV['DRUD_OAUTH'] } if ENV['DRUD_OAUTH']
       parse_rake_tasks
       parse_commits
       parse_credit
@@ -150,14 +151,31 @@ module Drud
     # once per author in a cookbooks project. This only returns the html_url to
     # the authors github profile.
     #
+    # If the environment variable DRUD_OAUTH is set, it will be used as an OAUTH
+    # token for accessing GITHUB
+    #
     # ==== Attributes
     #
     # * +:commit+ - The commit hash to get information from.
     def github_html_url(commit) # :doc:
       info = `cd #{@cookbook} && git remote -v`
       origin = /^origin.+?:([^\.+]*)/.match(info)[1]
-      client = Octokit::Client.new
-      detail = client.commit(origin, commit)
+      if @octokit_auth
+        client = Octokit::Client.new @octokit_auth
+      else
+        client = Octokit::Client.new
+      end
+      
+      begin
+        detail = client.commit(origin, commit)
+      rescue Octokit::NotFound
+        puts "ERROR: Accessing Github origin: #{origin} commit: #{commit} @octokit_auth: #{@octokit_auth.inspect}"
+        unless @octokit_auth
+          puts "\tNeed to set environment variable DRUD_OAUTH to a valid Github access token for private repos"
+          puts "\tSee https://help.github.com/articles/creating-an-access-token-for-command-line-use"
+        end
+        exit(-1)
+      end
       detail[:author][:html_url]
     end
 
