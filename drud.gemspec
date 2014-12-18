@@ -31,6 +31,8 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'chef', '~> 11.12.8'
   spec.add_runtime_dependency 'octokit', '~> 3.0'
   spec.add_runtime_dependency 'rake', '~> 10.3.2'
+  spec.add_runtime_dependency 'aws-sdk', '~> 1.59.1'
+  spec.add_runtime_dependency 'humanize-bytes', '~> 2.1.0'
 
   spec.add_development_dependency 'rspec', '~> 3.0.0'
   spec.add_development_dependency 'rubocop', '~> 0.24.1'
