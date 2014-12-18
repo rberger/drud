@@ -36,14 +36,28 @@ module Drud
       latest
     end
     # Get a client encrypted s3Object
-    def get(s3Object)
+    def get(s3Object, destination)
       key = Base64.decode64(@aws_utf_symmetric_key).encode('ascii-8bit')
       options = { encryption_key: key }
-      File.open(s3Object.key.split('/').last, 'wb') do |file|
+      dest = File.join(destination, s3Object.key.split('/').last)
+      cl = Humanize::Byte.new(s3Object.content_length)
+      mb = "#{cl.to_m}".to_f.round(2)
+      gb = "#{cl.to_g}".to_f.round(2)
+      size = "#{gb} GB" if mb >= 1000.00
+      size = "#{mb} MB" if mb < 1000.00
+      count = 0
+
+      print "#{s3Object.key} (#{size}) \n>"
+      $stdout.sync = true
+      File.open(dest, 'wb') do |file|
         s3Object.read(options) do |chunk|
+          print '=' if count % 1000 == 0
           file.write(chunk)
+          count += 1
         end
       end
+      print '<'
+      puts "\n#{dest}"
     end
     # Describe an s3Object
     def describe(s3Object)
