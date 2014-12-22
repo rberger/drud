@@ -35,6 +35,10 @@ module Drud
       end
       latest
     end
+    def load(key)
+      s3 = AWS::S3.new
+      s3.buckets[@aws_bucket].objects[key]
+    end
     # Get a client encrypted s3Object
     def get(s3Object, destination)
       key = Base64.decode64(@aws_utf_symmetric_key).encode('ascii-8bit')
@@ -47,8 +51,8 @@ module Drud
       size = "#{mb} MB" if mb < 1000.00
       count = 0
 
-      print "#{s3Object.key} (#{size}) \n>"
       $stdout.sync = true
+      print "#{s3Object.key} (#{size}) > "
       File.open(dest, 'wb') do |file|
         s3Object.read(options) do |chunk|
           print '=' if count % 1000 == 0
@@ -56,8 +60,7 @@ module Drud
           count += 1
         end
       end
-      print '<'
-      puts "\n#{dest}"
+      print " > #{dest}\n"
     end
     # Describe an s3Object
     def describe(s3Object)
