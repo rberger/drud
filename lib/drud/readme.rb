@@ -118,11 +118,12 @@ module Drud
     def parse_credit # :doc:
       credit = {}
       @commits.each do |commit, author|
+        next if author.nil? || (html_url = github_html_url commit).nil?
         credit[author][:count] += 1 unless credit[author].nil?
         next unless credit[author].nil?
         credit[author] = {}
         credit[author][:count] = 1
-        credit[author][:html_url] = github_html_url commit
+        credit[author][:html_url] = html_url
       end
       format_credit credit
     end
@@ -176,7 +177,7 @@ module Drud
         end
         exit(-1)
       end
-      detail[:author][:html_url]
+      (detail[:author][:html_url] rescue nil)
     end
 
     # Loads an instance of Rake::Application from the cookbooks Rakefile for
