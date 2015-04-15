@@ -165,7 +165,7 @@ module Drud
       else
         client = Octokit::Client.new
       end
-      
+
       begin
         detail = client.commit(origin, commit)
       rescue Octokit::NotFound

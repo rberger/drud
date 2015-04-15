@@ -2,3 +2,4 @@ AllCops:
   Include:
     - Gemfile
     - Rakefile
+inherit_from: .rubocop_todo.yml

@@ -35,5 +35,6 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'humanize-bytes', '~> 2.1.0'
 
   spec.add_development_dependency 'rspec', '~> 3.0.0'
+  spec.add_development_dependency 'simplecov'
   spec.add_development_dependency 'rubocop', '~> 0.24.1'
 end

@@ -22,6 +22,7 @@ module Drud
         secret_access_key: args[:aws_secret_key]
       )
     end
+
     # Return the latest s3Object based on a regex filename match.
     def latest(pattern)
       s3 = AWS::S3.new
@@ -35,10 +36,12 @@ module Drud
       end
       latest
     end
+
     def load(key)
       s3 = AWS::S3.new
       s3.buckets[@aws_bucket].objects[key]
     end
+
     # Get a client encrypted s3Object
     def get(s3Object, destination)
       key = Base64.decode64(@aws_utf_symmetric_key).encode('ascii-8bit')
@@ -62,9 +65,10 @@ module Drud
       end
       print " > #{dest}\n"
     end
+
     # Describe an s3Object
     def describe(s3Object)
-      if s3Object.exists?  
+      if s3Object.exists?
         puts "content-type:                       #{s3Object.content_type}" unless s3Object.content_type == ''
         cl = Humanize::Byte.new(s3Object.content_length)
         puts "content bytes:                      #{cl.to_b}"
