@@ -78,10 +78,7 @@ module Drud
       markdown = ReadmeTemplate.new(
         metadata: @metadata, tasks: @tasks, credit: @credit
       )
-      template_path = File.join(
-        File.dirname(File.expand_path(__FILE__)),
-        '../../templates/readme.md.erb'
-      )
+
       readme = markdown.render(File.read(template_path))
       File.open("#{@cookbook}/README.md", 'w') { |file| file.write(readme) }
     end
