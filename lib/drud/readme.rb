@@ -88,6 +88,48 @@ module Drud
 
     private
 
+    # Goes thru a heirarchy of potential template locations to get the template_path
+    def template_path
+      # Memoized
+      return @template_path if @template_path
+
+      paths = []
+      # Highest priority
+      # A template in templates/default/README.md.erb of the current cookbook
+      paths << File.join(
+        @cookbook,
+        "templates",
+        "default",
+        "README.md.erb"
+      )
+
+      # If there isn't one in the current cookbook
+      # A Template in ~/.chef/README.md.erb
+      paths << File.join(
+        File.expand_path("~/.chef"),
+        "README.md.erb"
+      )
+
+      # If no other template
+      # Use the one built in to the drud gem
+      paths << File.join(
+        File.dirname(File.expand_path(__FILE__)),
+        '../../templates/readme.md.erb'
+      )
+      
+      paths.each do |path|
+        if File.exists? path
+          @template_path = path
+          puts "Using Template: #{@template_path}"
+          return path
+        end
+      end
+      
+      # IF we got to here then a template was never found
+      STDERR.puts "ERROR: Can not fine a README.md template in:\n\t#{paths.join("\n\t")}"
+      exit(-1)
+    end
+
     # Reads the cookbooks metadata and instantiates an instance of
     # Chef::Cookbook::Metadata
     def load_metadata # :doc:
