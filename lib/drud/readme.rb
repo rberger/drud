@@ -146,7 +146,9 @@ module Drud
     # {commit, author}.
     def parse_commits # :doc:
       @logs.map do |log|
-        @commits[log.split("\n").shift] = /(^A[a-z]+: )(.+)$/.match(log)[2]
+        match = (/(^A[a-z]+: )(.+)$/.match(log)[2] rescue nil)
+        next unless match
+        @commits[log.split("\n").shift] = match
       end
     end
 
